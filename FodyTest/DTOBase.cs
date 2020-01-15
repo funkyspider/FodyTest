@@ -9,14 +9,14 @@ namespace FodyTest
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected internal ObjectState _objectState = ObjectState.Unchanged;
-        protected internal List<string> _modifiedProperties = new List<string>();
+        protected internal ObjectState ObjectState = ObjectState.Unchanged;
+        protected internal List<string> ModifiedProperties = new List<string>();
 
         protected void OnPropertyChanged(string propertyName, object before, object after) {
-            _objectState = ObjectState.Modified;
+            ObjectState = ObjectState.Modified;
 
-            if (!_modifiedProperties.Contains(propertyName))
-                _modifiedProperties.Add(propertyName);
+            if (!ModifiedProperties.Contains(propertyName))
+                ModifiedProperties.Add(propertyName);
 
         }
     }

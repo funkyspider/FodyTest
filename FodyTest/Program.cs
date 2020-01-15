@@ -23,9 +23,9 @@ namespace FodyTest
 
         private static void Log(PersonDTO p) {
             Console.WriteLine($"Forename: {p.Forename} | Surname: {p.Surname} | DOB: {p.DateOfBirth.ToString()}");
-            Console.WriteLine(p._objectState.ToString());
-            Console.WriteLine($"Modified properties : {p._modifiedProperties.Count}");
-            foreach (var item in p._modifiedProperties)
+            Console.WriteLine(p.ObjectState.ToString());
+            Console.WriteLine($"Modified properties : {p.ModifiedProperties.Count}");
+            foreach (var item in p.ModifiedProperties)
             {
                 Console.Write(item + " ");
             }
