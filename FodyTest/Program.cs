@@ -6,6 +6,17 @@ namespace FodyTest
     {
         static void Main(string[] args)
         {
+            TestModified();
+
+            Console.WriteLine("############");
+
+            TestAdded();
+
+            Console.ReadKey();
+        }
+
+        private static void TestModified()
+        {
             PersonDTO p = new PersonDTO();
             Log(p);
 
@@ -15,10 +26,19 @@ namespace FodyTest
             p.Surname = "Stephenson";
             Log(p);
 
-            p.DateOfBirth =  DateTime.Now;
+            p.DateOfBirth = DateTime.Now;
             Log(p);
 
-            Console.ReadKey();
+            p.ObjectState = ObjectState.Deleted;
+            Log(p);
+        }
+
+        private static void TestAdded()
+        {
+            PersonDTO p = new PersonDTO {Forename = "Silly", Surname= "Billy", DateOfBirth = DateTime.Now, ObjectState = ObjectState.Added };
+            Log(p);
+
+            p.ObjectState = ObjectState.Deleted;
         }
 
         private static void Log(PersonDTO p) {

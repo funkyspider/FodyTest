@@ -12,12 +12,17 @@ namespace FodyTest
         protected internal ObjectState ObjectState = ObjectState.Unchanged;
         protected internal List<string> ModifiedProperties = new List<string>();
 
-        protected void OnPropertyChanged(string propertyName, object before, object after) {
-            ObjectState = ObjectState.Modified;
+        protected void OnPropertyChanged(string propertyName, object before, object after)
+        {
+            if (ObjectState != ObjectState.Added && ObjectState != ObjectState.Deleted)
+            {
 
-            if (!ModifiedProperties.Contains(propertyName))
-                ModifiedProperties.Add(propertyName);
+                ObjectState = ObjectState.Modified;
 
+                if (!ModifiedProperties.Contains(propertyName))
+                    ModifiedProperties.Add(propertyName);
+
+            }
         }
     }
 }
