@@ -23,6 +23,10 @@ namespace FodyTest
             p.Forename = "Martin";
             Log(p);
 
+
+            p.Forename = "Jim";
+            Log(p);
+
             p.Surname = "Stephenson";
             Log(p);
 
